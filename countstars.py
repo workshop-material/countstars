@@ -2,8 +2,20 @@ import matplotlib.pyplot as plt
 from skimage import io, filters, color
 from skimage.measure import label, regionprops
 
+def plot_verification(image, positions, file_name):
+    # plot the original image
+    plt.figure(figsize=(8, 8))
+    plt.imshow(image, cmap="gray")
+
+    # overlay star positions with crosses
+    for (y, x) in positions:
+        plt.plot(y, x, "rx", markersize=5, markeredgewidth=0.1)
+
+    plt.savefig(file_name, dpi=300)
+
 
 def locate_position(image):
+    sigma = 0.5
     # if there is a fourth channel (alpha channel), ignore it
     rgb_image = image[:, :, :3]
     gray_image = color.rgb2gray(rgb_image)
@@ -28,20 +40,11 @@ def locate_position(image):
 
 
 image = io.imread("stars.png")
-sigma = 0.5
 
 
 star_positions = locate_position(image)
 
+plot_verification(image, star_positions, "detected-stars.png")
 
-# plot the original image
-plt.figure(figsize=(8, 8))
-plt.imshow(image, cmap="gray")
-
-# overlay star positions with crosses
-for star in star_positions:
-    plt.plot(star[1], star[0], "rx", markersize=5, markeredgewidth=0.1)
-
-plt.savefig("detected-stars.png", dpi=300)
 
 print(f"number of stars detected: {len(star_positions)}")
