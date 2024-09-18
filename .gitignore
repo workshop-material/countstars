@@ -1,1 +1,5 @@
 environment/
+.snakemake/
+input-images/
+logs/
+results/
