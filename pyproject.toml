@@ -16,4 +16,4 @@ dependencies = [
 Home = "https://github.com/workshop-material/countstars"
 
 [project.scripts]
-count-stars = "countstars:main"
+countstars = "countstars:main"
