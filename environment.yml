@@ -1,0 +1,10 @@
+name: stars
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - python >= 3.10
+  - click
+  - matplotlib
+  - scikit-image
+  - snakemake-minimal
