@@ -1,3 +1,11 @@
+"""
+This is counstrars.py to detect stars
+in telescope images.
+"""
+
+__version__ = "0.1.0"
+
+
 import matplotlib.pyplot as plt
 from skimage import io, filters, color
 from skimage.measure import label, regionprops
